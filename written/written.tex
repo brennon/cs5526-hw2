@@ -49,11 +49,11 @@ m = \binom{d+q}{q} \nonumber
 
 where the variable $\mathbf{n}=(n_0,\ldots,n_d)$ ranges over all the possible assignments such that $|\mathbf{n}|=q$ (the sum of $\mathbf{n}$ equals $q$). This is equivalent to the number of monomial terms in a multinomial expansion, and can be counted by the stars and bars method.
 
-To illustrate this, let $q = 5$ and $d = 3$. We are searching for all assignments of non-negative integers to the values $n_0,\ldots,n_d$ such that they sum to $q$. Arrange 5 stars (*) in a row. Place 4 bars (as there are $d + 1$ terms in $n_0,\ldots,n_d$) (|) between any of the stars, to the left of the entire row of stars, or to the right of the entire row of stars. Moving from left to right, groups of stars are counted and assigned to each $n_i$. Where there are no stars between two bars, the value of 0 is given to the corresponding $n_i$.
+To illustrate this, let $q = 5$ and $d = 3$. We are searching for all assignments of non-negative integers to the values $n_0,\ldots,n_d$ such that they sum to $q$. Arrange 5 stars (*) in a row. Place each of 4 (as there are $d + 1$ terms in $n_0,\ldots,n_d$) bars ($|$) between any of the stars, to the left of the entire row of stars, or to the right of the entire row of stars. Moving from left to right, groups of stars are counted and assigned to each $n_i$ in order. Where there are no stars between two bars, the value of 0 is given to the corresponding $n_i$.
 
 There are $\binom{d+1+q-1}{q} = \binom{d+q}{q}$ ways to arrange the stars and bars, and thus there are $\binom{d+q}{q}$ assignments of non-negative integers to the values $n_0,\ldots,n_d$ such that they sum to $q$.
 
-\item (12 points) Given the three points $\mathbf{x}_1 = (2.5, 1)^\mathit{T}$, $\mathbf{x}_1 = (3.5, 4)^\mathit{T}$, and $\mathbf{x}_1 = (2, 2.1)^\mathit{T}$.
+\item (12 points) Given the three points $\mathbf{x}_1 = (2.5, 1)^\mathit{T}$, $\mathbf{x}_2 = (3.5, 4)^\mathit{T}$, and $\mathbf{x}_3 = (2, 2.1)^\mathit{T}$.
 
 \begin{enumerate}
 \item Compute the kernel matrix for the Gaussian kernel assuming that $\sigma^2 = 5$.
@@ -180,10 +180,10 @@ b = - 2 x_1 - 1 x_2 = -2 \cdot 6 - 1 \cdot 0 = -12
 Thus, $\mathbf{w} = \left( \begin{array}{c} 2 \\ 1 \end{array} \right)$ is the weight vector, and $b = -12$ is the bias, and the equation of the hyperplane is given as
 
 \begin{equation*}
-h(\mathbf{x}) = \mathbf{w}^\mathit{T} \mathbf{x} + b = (\begin{array}{cc} 2 & 1 \end{array}) \left( \begin{array}{c} x_1 \\ x_2 \end{array} \right) - 12 = 0
+h_1(\mathbf{x}) = \mathbf{w}^\mathit{T} \mathbf{x} + b = (\begin{array}{cc} 2 & 1 \end{array}) \left( \begin{array}{c} x_1 \\ x_2 \end{array} \right) - 12 = 0
 \end{equation*}
 
-We use the points $x_1 = (\begin{array}{cc}2 & 0 \end{array})$ and $x_2 = (\begin{array}{cc}5 & 5 \end{array})$ on $h_1$ to find the equation for $h_1$
+We use the points $x_1 = (\begin{array}{cc}2 & 0 \end{array})$ and $x_2 = (\begin{array}{cc}5 & 5 \end{array})$ on $h_2$ to find the equation for $h_2$
 
 \begin{equation*}
 -\frac{w_1}{w_2} = \frac{5-0}{5-2} = \frac{5}{3}
@@ -198,7 +198,7 @@ b = - (-5) x_1 - 3 x_2 = 5 \cdot 5 - 3 \cdot 5 = 10
 Thus, $\mathbf{w} = \left( \begin{array}{c} -5 \\ 3 \end{array} \right)$ is the weight vector, and $b = 10$ is the bias, and the equation of the hyperplane is given as
 
 \begin{equation*}
-h(\mathbf{x}) = \mathbf{w}^\mathit{T} \mathbf{x} + b = (\begin{array}{cc} -5 & 3 \end{array}) \left( \begin{array}{c} x_1 \\ x_2 \end{array} \right) + 10 = 0
+h_2(\mathbf{x}) = \mathbf{w}^\mathit{T} \mathbf{x} + b = (\begin{array}{cc} -5 & 3 \end{array}) \left( \begin{array}{c} x_1 \\ x_2 \end{array} \right) + 10 = 0
 \end{equation*}
 
 \item Show all the support vectors for $h_1$ and $h_2$.
@@ -354,7 +354,7 @@ and the margin of the canonical hyperplane for $h_2$ is
 =
 \frac{1}{0.6489}
 =
--1.5411
+1.5411
 \end{equation*}
 
 Thus, the hyperplane $h_2$ is better at separating the two classes based on these margin computations.
@@ -365,7 +365,7 @@ Thus, the hyperplane $h_2$ is better at separating the two classes based on thes
 
 \textbf{Solution:}
 
-Based on the latter approach suggested in the problem, two of the points on the best separating hyperplane are $x_1 = (4.5, 2)$ and $x_2 = (5.5, 6)$. Following the logic from part (a) we use these points to find the equation for this new separating hyperplane $h_3$
+Based on the latter approach suggested in the problem, two of the points on the best separating hyperplane are $x_1 = (4.5, 2)$ and $x_2 = (5.5, 6)$. Repeating the procedure from part (a) we use these points to find the equation for this new separating hyperplane $h_3$
 
 \begin{equation*}
 h_3 = \mathbf{w}^\mathit{T} \mathbf{x} + b = w_1 x_1 + w_2 x_2 + b = 0
@@ -392,7 +392,7 @@ b = 4 x_1 - 1 x_2 = 4 \cdot 4.5 - 1 \cdot 2 = 18 - 2 = 16
 Thus, $\mathbf{w} = \left( \begin{array}{c} -4 \\ 1 \end{array} \right)$ is the weight vector, and $b = 16$ is the bias, and the equation of the hyperplane is given as
 
 \begin{equation*}
-h(\mathbf{x}) = \mathbf{w}^\mathit{T} \mathbf{x} + b = (\begin{array}{cc} -4 & 1 \end{array}) \left( \begin{array}{c} x_1 \\ x_2 \end{array} \right) + 16 = 0
+h_3(\mathbf{x}) = \mathbf{w}^\mathit{T} \mathbf{x} + b = (\begin{array}{cc} -4 & 1 \end{array}) \left( \begin{array}{c} x_1 \\ x_2 \end{array} \right) + 16 = 0
 \end{equation*}
 
 \end{enumerate}
@@ -460,7 +460,7 @@ h(\mathbf{x}) = \left( \begin{array}{c} 0.846 \\ 0.3852 \end{array} \right)^\mat
 Consider the support vector $\mathbf{x}^* = \mathbf{x}_1 = (4,2.9)^\mathit{T}$, with class $y^* = 1$. To find the canonical hyperplane equation, we have to rescale the weight vector and bias by the scalar $s$
 
 \begin{equation*}
-s = \frac{1}{y^*h_1(\mathbf{x}^*)} = \frac{1}{1\left(
+s = \frac{1}{y^*h(\mathbf{x}^*)} = \frac{1}{1\left(
 \left(
 \begin{array}{c}
 0.846 \\ 0.3852
@@ -509,8 +509,8 @@ h(\mathbf{x}) =
 \left(
 \begin{array}{c}
 0.2892 \\ 0.1317
-\end{array}^\mathit{T}
-\right)
+\end{array}
+\right)^\mathit{T}
 \mathbf{x} - 0.5383
 \end{equation*}
 
@@ -533,7 +533,7 @@ and the margin of the canonical hyperplane for $h$ is
 The distance from $\mathbf{x}_6$ to the hyperplane is then given by
 
 \begin{eqnarray*}
-\delta^*
+\delta_{x_6}
 &=&
 \frac{y_6(\mathbf{x}_6)}{\Vert \mathbf{w} \Vert}
 =
@@ -555,9 +555,9 @@ The distance from $\mathbf{x}_6$ to the hyperplane is then given by
 &=& -4.2129
 \end{eqnarray*}
 
-While the SVM misclassifies $\mathbf{x}_6$, it does not lie within the SVM margin.
+The SVM both misclassifies $\mathbf{x}_6$, and it does not lie within the SVM margin.
 
-\item Classify the point $\mathbf{z} = (3, 3)_\mathit{T}$ using $h(x)$ from above.
+\item Classify the point $\mathbf{z} = (3, 3)^\mathit{T}$ using $h(x)$ from above.
 
 \textbf{Solution:}
 
